@@ -76,7 +76,10 @@ func process(dir string, files []os.FileInfo, minimize bool) error {
 				return err
 			}
 
-			io.Copy(w, jcr)
+			_, err = io.Copy(w, jcr)
+			if err != nil {
+				return err
+			}
 
 			if !minimize {
 				err := moveFile(dir+`/`+name+`.jsonc`, dir+`/`+name+fending)
@@ -138,6 +141,10 @@ func main() {
 			os.Exit(1)
 		}
 
-		io.Copy(os.Stdout, r)
+		_, err = io.Copy(os.Stdout, r)
+		if err != nil {
+			fmt.Printf("input stream, error: %v", err)
+			os.Exit(2)
+		}
 	}
 }
