@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/kingpin"
-	"github.com/komkom/jsonc/jsonc"
+	"github.com/umaumax/jsonc/jsonc"
 )
 
 var (

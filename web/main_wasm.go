@@ -10,7 +10,7 @@ import (
 	"strings"
 	"syscall/js"
 
-	"github.com/komkom/jsonc/jsonc"
+	"github.com/umaumax/jsonc/jsonc"
 )
 
 var Document = js.Global().Get("document")

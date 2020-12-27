@@ -1,4 +1,4 @@
-module github.com/komkom/jsonc
+module github.com/umaumax/jsonc
 
 go 1.14
 

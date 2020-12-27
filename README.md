@@ -11,7 +11,7 @@ Any valid json is also a valid jsonc.
 ## Install
 
 ```bash
-go get github.com/komkom/jsonc/...
+go get github.com/umaumax/jsonc/...
 ```
 
 ## Use
