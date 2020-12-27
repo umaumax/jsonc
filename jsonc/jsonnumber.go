@@ -33,7 +33,7 @@ func IsNumber(value string) bool {
 		switch s {
 		case NumberRoot:
 
-			if v == '-' {
+			if v == '-' || v == '+' {
 				break
 			}
 
