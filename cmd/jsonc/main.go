@@ -13,8 +13,9 @@ import (
 )
 
 var (
-	minimize = kingpin.Flag(`minimize`, `transform to minified json`).Short('m').Bool()
-	path     = kingpin.Flag(`path`, `a jsonc file or a directory containing jsonc to process`).Short('p').String()
+	minimize  = kingpin.Flag(`minimize`, `transform to minified json`).Short('m').Bool()
+	path      = kingpin.Flag(`path`, `a jsonc file or a directory containing jsonc to process`).Short('p').String()
+	indentNum = kingpin.Flag(`indent`, `number of spaces of indent`).Default("2").Short('i').Int()
 )
 
 func moveFile(to string, from string) error {
@@ -70,7 +71,7 @@ func process(dir string, files []os.FileInfo, minimize bool) error {
 			defer f.Close()
 			w = f
 
-			jcr, err = jsonc.New(r, minimize, " ")
+			jcr, err = jsonc.New(r, minimize, " ", *indentNum)
 			if err != nil {
 				return err
 			}
@@ -131,7 +132,7 @@ func main() {
 
 	} else {
 
-		r, err := jsonc.New(os.Stdin, *minimize, " ")
+		r, err := jsonc.New(os.Stdin, *minimize, " ", *indentNum)
 		if err != nil {
 			fmt.Printf("no input stream, error: %v", err)
 			os.Exit(1)

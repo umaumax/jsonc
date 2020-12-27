@@ -115,7 +115,7 @@ func TestJsonParser(t *testing.T) {
 		panic(err)
 	}
 
-	f := NewFilter(ring, 256, false, " ")
+	f := NewFilter(ring, 256, false, " ", 1)
 
 	for idx, d := range data {
 
@@ -204,7 +204,7 @@ func testFormattingFile(t *testing.T, path string) {
 			panic(err)
 		}
 
-		fl := NewFilter(ring, 16, true, " ")
+		fl := NewFilter(ring, 16, true, " ", 1)
 
 		b := strings.NewReader(in)
 		ring.Clear(func() (r rune, size int, err error) {
@@ -228,7 +228,7 @@ func TestMultilineValue(t *testing.T) {
 	ring, err := NewRing(256, 64, nil)
 	require.NoError(t, err)
 
-	f := NewFilter(ring, 256, false, " ")
+	f := NewFilter(ring, 256, false, " ", 1)
 
 	b := strings.NewReader(string(data))
 	ring.Clear(func() (r rune, size int, err error) {

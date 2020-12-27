@@ -29,7 +29,7 @@ func NewDecoder(r io.Reader, opts ...Options) (*Decoder, error) {
 		return nil, err
 	}
 
-	dec.filter = NewFilter(ring, 256, false, ``)
+	dec.filter = NewFilter(ring, 256, false, ``, 1)
 	return &dec, nil
 }
 

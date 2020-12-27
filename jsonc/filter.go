@@ -39,12 +39,13 @@ type Filter struct {
 	format       bool
 	newlineCount int
 	space        string
+	indentNum    int
 
 	outbuf []byte
 }
 
-func NewFilter(ring *Ring, outMinSize int, format bool, space string) *Filter {
-	return &Filter{ring: ring, outMinSize: outMinSize, rootState: &RootState{}, format: format, space: space}
+func NewFilter(ring *Ring, outMinSize int, format bool, space string, indentNum int) *Filter {
+	return &Filter{ring: ring, outMinSize: outMinSize, rootState: &RootState{}, format: format, space: space, indentNum: indentNum}
 }
 
 func (f *Filter) Clear() {
@@ -873,7 +874,7 @@ func (f *Filter) indent() int {
 }
 
 func (f *Filter) pushSpaces(c int) {
-	for i := 0; i < c; i++ {
+	for i := 0; i < f.indentNum*c; i++ {
 		f.pushOut(' ')
 	}
 }

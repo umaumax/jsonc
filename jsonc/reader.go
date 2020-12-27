@@ -2,7 +2,7 @@ package jsonc
 
 import "io"
 
-func New(r io.Reader, minimize bool, space string) (io.Reader, error) {
+func New(r io.Reader, minimize bool, space string, indentNum int) (io.Reader, error) {
 
 	buf := NewBuffer(r, 256, 64)
 
@@ -14,5 +14,5 @@ func New(r io.Reader, minimize bool, space string) (io.Reader, error) {
 		return nil, err
 	}
 
-	return NewFilter(ring, 256, !minimize, space), nil
+	return NewFilter(ring, 256, !minimize, space, indentNum), nil
 }
