@@ -448,6 +448,7 @@ func (o *ObjectState) Next(ru rune, f *Filter) error {
 
 		if ru == ':' {
 			f.pushOut(ru)
+			f.pushOut(' ')
 			o.internalState = ObjInternalDelimiter
 			return nil
 		}
