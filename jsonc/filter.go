@@ -668,7 +668,9 @@ func dispatchComment(f *Filter, postHook func() error) (shouldDispatch bool, err
 			shouldDispatch = true
 			err = f.ring.Advance()
 			if f.format {
-				f.pushBytes([]byte(" //"))
+				f.pushBytes([]byte("\n"))
+				f.pushSpaces(f.indent())
+				f.pushBytes([]byte("//"))
 			}
 			f.pushState(&CommentState{})
 			return
@@ -706,7 +708,7 @@ func (*CommentState) Next(ru rune, f *Filter) error {
 	if ru == '\n' {
 		f.popState()
 		if f.format {
-			f.pushOut('\n')
+			// f.pushOut('\n')
 		}
 		return nil
 	}
