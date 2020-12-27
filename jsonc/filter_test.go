@@ -63,6 +63,18 @@ func JsonData() []TestJson {
 			ExpectedJsonString: `{"key":+1}`,
 		},
 		{
+			JsonCString: `{
+  "key":{
+    "some":["*"]
+  }
+}`,
+			ExpectedJsonString: `{
+  "key":{
+    "some":["*"]
+  }
+}`,
+		},
+		{
 			JsonCString: ` /* json description */
 	{ 
 		/* test */

@@ -590,7 +590,9 @@ func (a *ArrayState) Next(ru rune, f *Filter) error {
 		if ru == ']' {
 			if f.format {
 				f.pushOutMult(a.lineBreaks, 1, '\n')
-				f.pushSpaces(f.indent() - 1)
+				if a.lineBreaks > 0 {
+					f.pushSpaces(f.indent() - 1)
+				}
 			}
 			f.popState()
 			f.pushOut(ru)
